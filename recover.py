@@ -4,6 +4,7 @@ import time
 import urllib.request
 from threading import Thread
 from bs4 import BeautifulSoup
+from cloudscraper import CloudScraper
 import requests
 import webbrowser
 import random
@@ -74,7 +75,7 @@ def linkTimeCheck(link):
     # global timestamp
     if linkChecker(link) == 2 or linkChecker(link) == 4:  # streamscharts
         print('Date and Time are checking..')
-        r = requests.get(link)
+        r = CloudScraper().get(link)
 
         soup = BeautifulSoup(r.content, 'html.parser')
 
@@ -189,7 +190,7 @@ def linkTimeCheck(link):
         }
 
 
-        r = requests.get(link, headers=header)
+        r = CloudScraper().get(link, headers=header)
 
         soup = BeautifulSoup(r.content, 'html.parser')
 
